@@ -1,0 +1,48 @@
+backend:
+  name: github
+  repo: hammadhafee55/taskguide   # change to your-username/your-repo
+  branch: main
+media_folder: static/uploads
+public_folder: /uploads
+collections:
+  - name: guides
+    label: Guides / Blog
+    folder: content/guides
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{category}})"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Category, name: category, widget: select, options: ["Government Guides","Licenses & IDs","Business & Tax","Education"]}
+      - {label: Published date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true}
+      - {label: Last updated, name: updated, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true}
+      - {label: Short excerpt, name: excerpt, widget: text}
+      - {label: SEO description, name: description, widget: string, required: false}
+      - {label: Cover image, name: cover, widget: image, required: false}
+      - {label: Draft (hide from website), name: draft, widget: boolean, default: false}
+      - {label: Full guide, name: body, widget: markdown}
+  - name: businesses
+    label: Businesses
+    folder: content/businesses
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{name}} - {{published}}"
+    fields:
+      - {label: Approved and live on website, name: published, widget: boolean, default: false}
+      - {label: Business name, name: name, widget: string}
+      - {label: Category, name: category, widget: select, options: ["Legal & Consulting","IT & Digital","Accounting & Tax","Retail & Products","Other Services"]}
+      - {label: City, name: city, widget: string, required: false}
+      - {label: Tagline, name: tagline, widget: string, required: false}
+      - {label: Logo, name: logo, widget: image, required: false}
+      - {label: Website, name: website, widget: string, required: false}
+      - {label: Social media link, name: social, widget: string, required: false}
+      - {label: Email, name: email, widget: string, required: false}
+      - {label: Phone / WhatsApp, name: phone, widget: string, required: false}
+      - {label: Address, name: address, widget: string, required: false}
+      - {label: How the business works, name: how_it_works, widget: text, required: false}
+      - {label: Products and services, name: products, widget: text, required: false}
+      - {label: About the business, name: body, widget: markdown}
